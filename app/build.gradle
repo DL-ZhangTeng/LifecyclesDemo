@@ -1,0 +1,49 @@
+apply plugin: 'com.android.application'
+
+apply plugin: 'kotlin-android'
+
+apply plugin: 'kotlin-android-extensions'
+
+android {
+    compileSdkVersion 29
+    buildToolsVersion "29.0.0"
+    defaultConfig {
+        applicationId "com.example.lifecyclesdemo"
+        minSdkVersion 24
+        targetSdkVersion 29
+        versionCode 1
+        versionName "1.0"
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+}
+
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    implementation"org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
+    implementation 'androidx.appcompat:appcompat:1.0.2'
+    implementation 'androidx.core:core-ktx:1.0.2'
+    implementation 'androidx.constraintlayout:constraintlayout:1.1.3'
+    testImplementation 'junit:junit:4.12'
+    androidTestImplementation 'androidx.test:runner:1.2.0'
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
+//    // ViewModel and LiveData
+//    implementation "android.arch.lifecycle:extensions:1.1.1"
+//    // alternatively - just ViewModel
+//    implementation "android.arch.lifecycle:viewmodel:1.1.1" // use -ktx for Kotlin
+//    // alternatively - just LiveData
+//    implementation "android.arch.lifecycle:livedata:1.1.1"
+    // alternatively - Lifecycles only (no ViewModel or LiveData).
+    //     Support library depends on this lightweight import
+    implementation "android.arch.lifecycle:runtime:1.1.1"
+    annotationProcessor "android.arch.lifecycle:compiler:1.1.1"
+//    // alternately - if using Java8, use the following instead of compiler
+//    implementation "android.arch.lifecycle:common-java8:1.1.1"
+//    // optional - ReactiveStreams support for LiveData
+//    implementation "android.arch.lifecycle:reactivestreams:1.1.1"
+}
